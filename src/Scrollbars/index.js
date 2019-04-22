@@ -508,6 +508,7 @@ export default class Scrollbars extends Component {
             autoHeightMax,
             style,
             children,
+            defaultScrollbarWidth,
             ...props
         } = this.props;
         /* eslint-enable no-unused-vars */

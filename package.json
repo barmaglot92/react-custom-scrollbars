@@ -1,6 +1,6 @@
 {
-  "name": "react-custom-scrollbars",
-  "version": "4.2.0",
+  "name": "@mediascope/react-custom-scrollbars",
+  "version": "4.2.2",
   "description": "React scrollbars component",
   "main": "lib/index.js",
   "scripts": {
@@ -13,6 +13,9 @@
     "test:watch": "cross-env NODE_ENV=test karma start --auto-watch --no-single-run",
     "test:cov": "cross-env NODE_ENV=test COVERAGE=true karma start --single-run",
     "prepublish": "npm run lint && npm run test && npm run clean && npm run build && npm run build:umd && npm run build:umd:min && node ./prepublish"
+  },
+  "publishConfig": {
+    "registry": "https://artifactory.mediascope.net/artifactory/api/npm/frontend/"
   },
   "repository": {
     "type": "git",

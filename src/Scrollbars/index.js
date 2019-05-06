@@ -215,7 +215,7 @@ export default class Scrollbars extends Component {
         if (typeof document === 'undefined' || !this.view) return;
         const { view, trackHorizontal, trackVertical, thumbHorizontal, thumbVertical } = this;
         view.addEventListener('scroll', this.handleScroll);
-        if (!getScrollbarWidth()) return;
+        if (!getScrollbarWidth(this.props.defaultScrollbarWidth)) return;
         trackHorizontal.addEventListener('mouseenter', this.handleTrackMouseEnter);
         trackHorizontal.addEventListener('mouseleave', this.handleTrackMouseLeave);
         trackHorizontal.addEventListener('mousedown', this.handleHorizontalTrackMouseDown);
@@ -232,7 +232,7 @@ export default class Scrollbars extends Component {
         if (typeof document === 'undefined' || !this.view) return;
         const { view, trackHorizontal, trackVertical, thumbHorizontal, thumbVertical } = this;
         view.removeEventListener('scroll', this.handleScroll);
-        if (!getScrollbarWidth()) return;
+        if (!getScrollbarWidth(this.props.defaultScrollbarWidth)) return;
         trackHorizontal.removeEventListener('mouseenter', this.handleTrackMouseEnter);
         trackHorizontal.removeEventListener('mouseleave', this.handleTrackMouseLeave);
         trackHorizontal.removeEventListener('mousedown', this.handleHorizontalTrackMouseDown);
@@ -446,7 +446,7 @@ export default class Scrollbars extends Component {
     _update(callback) {
         const { onUpdate, hideTracksWhenNotNeeded } = this.props;
         const values = this.getValues();
-        if (getScrollbarWidth()) {
+        if (getScrollbarWidth(this.props.defaultScrollbarWidth)) {
             const { scrollLeft, clientWidth, scrollWidth } = values;
             const trackHorizontalWidth = getInnerWidth(this.trackHorizontal);
             const thumbHorizontalWidth = this.getThumbHorizontalWidth();
@@ -482,7 +482,7 @@ export default class Scrollbars extends Component {
     }
 
     render() {
-        const scrollbarWidth = getScrollbarWidth();
+        const scrollbarWidth = getScrollbarWidth(this.props.defaultScrollbarWidth);
         /* eslint-disable no-unused-vars */
         const {
             onScroll,
@@ -644,4 +644,5 @@ Scrollbars.defaultProps = {
     autoHeightMin: 0,
     autoHeightMax: 200,
     universal: false,
+    defaultScrollbarWidth: 0,
 };
